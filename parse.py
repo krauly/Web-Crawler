@@ -27,3 +27,19 @@ def get_page(url):
     soup = BeautifulSoup(web_page.content, 'lxml')
     
     return soup
+
+def get_sitemap_urls(xml):
+    """Return the number of URLs in a website XML sitemap file"""
+    
+    supra = requests.get(xml)
+    paran = BeautifulSoup(supra.content, "xml")
+
+    urls_from_xml = []
+
+    loc_tags = paran.find_all('loc')
+
+    for loc in loc_tags:
+        urls_from_xml.append(loc.get_text()) 
+   
+    print(f' The number of sitemaps are: {len(urls_from_xml)} {urls_from_xml}')
+    
