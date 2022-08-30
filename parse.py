@@ -41,5 +41,11 @@ def get_sitemap_urls(xml):
     for loc in loc_tags:
         urls_from_xml.append(loc.get_text()) 
    
-    print(f' The number of sitemaps are: {len(urls_from_xml)} {urls_from_xml}')
+    return urls_from_xml
+    
+    
+    for i in screen:
+        r = requests.get (i, stream=True)
+        g = gzip.GzipFile(fileobj=BytesIO(r.content))
+        file = g.read()
     
